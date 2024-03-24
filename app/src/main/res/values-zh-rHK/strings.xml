@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">天氣應用程式</string>
+    <string name="defaultLocation">香港</string>
+    <string name="maxTemp">最高</string>
+    <string name="minTemp">最低</string>
+    <string name="sunset">日落</string>
+    <string name="sunrise">日出</string>
+    <string name="weatherForecast">天氣預測</string>
+    <string name="outlookTitle">展望:</string>
+    <string name="localWeatherForecast">本港地區天氣預報</string>
+    <string name="nineDayWeatherForecast">九天天氣預報</string>
+    <string name="currentweatherReport">本港地區天氣報告</string>
+    <string name="currentweather">目前天氣</string>
+    <string name="convertto">轉換為：</string>
+    <string name="celsius">攝氏</string>
+    <string name="fahrenheit">華氏</string>
+    <string name="input">輸入:</string>
+    <string name="result">結果:</string>
+    <string name="convert">轉換</string>
+    <string name="hint">輸入溫度</string>
+    <string name="temperatureConverter">溫度轉換器</string>
+    <string name="otherCountryWeather">其他國家天氣</string>
+</resources>

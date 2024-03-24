@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/mytoolbar"
+        layout="@layout/toolbal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <!-- 公曆與農曆對照表 chinese dat info -->
+            <TextView
+                android:id="@+id/updateTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/chineseDay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="50px"
+                android:layout_marginBottom="30px"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/toDayDate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+
+            <!-- default location -->
+            <TextView
+                android:id="@+id/defaultLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50px"
+                android:text="@string/defaultLocation"
+                android:textAlignment="center"
+                android:textSize="34sp" />
+
+            <!-- current weather -->
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="50px"
+                android:layout_marginBottom="50px">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10px"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:id="@+id/currentTemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textSize="50dp" />
+
+                    <TextView
+                        android:id="@+id/currentTempUnits"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10px"
+                        android:textAlignment="center"
+                        android:textSize="50dp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:id="@+id/currentMaxText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10px"
+                        android:text="@string/maxTemp"
+                        android:textAlignment="center"
+                        android:textSize="30dp" />
+
+                    <TextView
+                        android:id="@+id/currentMaxTemp"
+                        android:layout_width="29dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10px"
+                        android:textAlignment="textEnd"
+                        android:textSize="30dp" />
+
+                    <TextView
+                        android:id="@+id/currentMaxTempUnits"
+                        android:layout_width="69dp"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textStart"
+                        android:textSize="30dp" />
+
+                    <TextView
+                        android:id="@+id/currentMinText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20px"
+                        android:text="@string/minTemp"
+                        android:textAlignment="textEnd"
+                        android:textSize="30dp" />
+
+                    <TextView
+                        android:id="@+id/currentMinTemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textStart"
+                        android:textSize="30dp" />
+
+                    <TextView
+                        android:id="@+id/currentMinTempUnits"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textSize="30dp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:id="@+id/humidity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textEnd"
+                        android:textSize="30dp" />
+
+                    <TextView
+                        android:id="@+id/humidityUnits"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textStart"
+                        android:textSize="30dp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:id="@+id/windSpeed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textEnd"
+                        android:textSize="30dp" />
+
+                    <TextView
+                        android:id="@+id/windSpeedUnits"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textStart"
+                        android:textSize="30dp" />
+
+                    <TextView
+                        android:id="@+id/windDirection"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textEnd"
+                        android:textSize="30dp" />
+
+                    <TextView
+                        android:id="@+id/windDirectionUnits"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textStart"
+                        android:textSize="30dp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:id="@+id/sunset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sunset"
+                        android:textAlignment="center"
+                        android:textSize="30dp" />
+
+                    <TextView
+                        android:id="@+id/sunrise"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sunrise"
+                        android:textAlignment="center"
+                        android:textSize="30dp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:id="@+id/sunsetTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textSize="30dp" />
+
+                    <TextView
+                        android:id="@+id/sunriseTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textSize="30dp" />
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+
+
+    <!--            <ListView-->
+    <!--                android:id="@+id/listview"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="533dp">-->
+
+    <!--            </ListView>-->
+
+    <!--            <TextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:text="a\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\n"-->
+    <!--                android:textSize="30sp" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/latTextView"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:text="Latitude will be here! " />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/lonTextView"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:text="Longitude will be here! " />-->
+
+    <!--        </LinearLayout>-->
+    <!--    </ScrollView>-->

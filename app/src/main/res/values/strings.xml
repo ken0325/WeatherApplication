@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Weather Application</string>
+    <string name="defaultLocation">Hong Kong</string>
+    <string name="maxTemp">Max</string>
+    <string name="minTemp">Min</string>
+    <string name="sunset">sunset</string>
+    <string name="sunrise">sunrise</string>
+    <string name="weatherForecast">Weather forecast</string>
+    <string name="outlookTitle">Outlook:</string>
+    <string name="localWeatherForecast">Local Weather Forecast</string>
+    <string name="nineDayWeatherForecast">9-day Weather Forecast</string>
+    <string name="currentweatherReport">Current Weather Report</string>
+    <string name="currentweather">Current Weather</string>
+    <string name="convertto">Convert to:</string>
+    <string name="celsius">Celsius</string>
+    <string name="fahrenheit">Fahrenheit</string>
+    <string name="input">Input:</string>
+    <string name="result">Result:</string>
+    <string name="convert">Convert</string>
+    <string name="hint">Enter temperature here</string>
+    <string name="temperatureConverter">Temperature Converter</string>
+    <string name="otherCountryWeather">Other Country Weather</string>
+</resources>
