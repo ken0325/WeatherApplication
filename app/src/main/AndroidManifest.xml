@@ -29,16 +29,16 @@
         <activity android:name=".LocalWeatherForecastActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity"></activity>
-        <activity android:name=".NineDayWeatherForecastActivity"
-            android:exported="false"
-            android:parentActivityName=".MainActivity"></activity>
         <activity android:name=".CurrentWeatherReportActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity"></activity>
-        <activity android:name=".TemperatureConverterActivity"
+        <activity android:name=".NineDayWeatherForecastActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity"></activity>
         <activity android:name=".OtherCountryWeatherActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".TemperatureConverterActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity"></activity>
     </application>

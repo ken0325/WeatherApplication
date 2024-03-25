@@ -20,4 +20,5 @@
     <string name="hint">輸入溫度</string>
     <string name="temperatureConverter">溫度轉換器</string>
     <string name="otherCountryWeather">其他國家天氣</string>
+    <string name="RainfallInThePastHourFromAutomaticWeatherStation">自動氣象站過去一小時的雨量</string>
 </resources>

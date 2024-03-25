@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -22,8 +23,9 @@ import java.util.ArrayList;
 public class CurrentWeatherReportActivity extends OptionsMenuActivity {
     private Spinner selecterHKObs;
     private ImageView currentTempIcon;
-    private TextView nowTemp, nowHumidity, uvIndex;
+    private TextView nowTemp, nowTempUnit, nowHumidity, uvIndex, automaticWeatherStation, automaticWeatherStationID, automaticWeatherStationHourlyRainfallValueUnit;
     private ImageButton refreshBtn;
+    private Button tempConverBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +35,14 @@ public class CurrentWeatherReportActivity extends OptionsMenuActivity {
         selecterHKObs = findViewById(R.id.selecterHKObs);
         currentTempIcon = findViewById(R.id.currentTempIcon);
         nowTemp = findViewById(R.id.nowTemp);
+        nowTempUnit = findViewById(R.id.nowTempUnit);
         nowHumidity = findViewById(R.id.nowHumidity);
         uvIndex = findViewById(R.id.uvIndex);
         refreshBtn = findViewById(R.id.refreshBtn);
+        automaticWeatherStation = findViewById(R.id.automaticWeatherStation);
+        automaticWeatherStationID = findViewById(R.id.automaticWeatherStationID);
+        automaticWeatherStationHourlyRainfallValueUnit = findViewById(R.id.automaticWeatherStationHourlyRainfallValueUnit);
+        tempConverBtn = findViewById(R.id.tempConverBtn);
 
         Toolbar toolbar = findViewById(R.id.mytoolbar);
         toolbar.setSubtitle(R.string.currentweatherReport);
@@ -55,7 +62,8 @@ public class CurrentWeatherReportActivity extends OptionsMenuActivity {
                     ArrayList<Datum> d = ModelCurrentWeatherReport.temperature.get(e).getData();
                     for (int k = 0; k < d.size(); k++) {
                         if (d.get(k).getPlace().equals(newPlace)) {
-                            nowTemp.setText(String.valueOf(ModelCurrentWeatherReport.temperature.get(e).getData().get(k).getValue()) + " °" + ModelCurrentWeatherReport.temperature.get(e).getData().get(k).getUnit());
+                            nowTemp.setText(String.valueOf(ModelCurrentWeatherReport.temperature.get(e).getData().get(k).getValue()));
+                            nowTempUnit.setText(" °" + ModelCurrentWeatherReport.temperature.get(e).getData().get(k).getUnit());
                         }
                     }
                 }
@@ -75,6 +83,20 @@ public class CurrentWeatherReportActivity extends OptionsMenuActivity {
                 Toast.makeText(getApplicationContext(), "data is refresh", Toast.LENGTH_LONG).show();
                 startAPI();
                 setData();
+            }
+        });
+
+        tempConverBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (MainActivity.nowTempUnit.equals("C")) {
+                    MainActivity.nowTempUnit = "F";
+                    nowTemp.setText(String.valueOf(MainActivity.formatter.format(ConverterUtil.convertCelsiusToFahrenheit(Double.parseDouble(nowTemp.getText().toString())))));
+                } else {
+                    MainActivity.nowTempUnit = "C";
+                    nowTemp.setText(String.valueOf(MainActivity.formatter.format(ConverterUtil.convertFahrenheitToCelsius(Double.parseDouble(nowTemp.getText().toString())))));
+                }
+                nowTempUnit.setText(" °" + MainActivity.nowTempUnit);
             }
         });
     }
@@ -104,10 +126,23 @@ public class CurrentWeatherReportActivity extends OptionsMenuActivity {
         int resID = getResources().getIdentifier(mDrawableName, "drawable", getPackageName());
         currentTempIcon.setImageResource(resID);
 
-        nowTemp.setText(String.valueOf(ModelCurrentWeatherReport.temperature.get(0).getData().get(0).getValue()) + " °" + ModelCurrentWeatherReport.temperature.get(0).getData().get(0).getUnit());
-
+        nowTemp.setText(String.valueOf(ModelCurrentWeatherReport.temperature.get(0).getData().get(0).getValue()));
+        nowTempUnit.setText(" °" + ModelCurrentWeatherReport.temperature.get(0).getData().get(0).getUnit());
         nowHumidity.setText(String.valueOf(ModelCurrentWeatherReport.humidity.getData().get(0).getValue()) + "%");
 
-        uvIndex.setText("");
+        if (ModelCurrentWeatherReport.uvindex != null) {
+            uvIndex.setText("uv" + ModelCurrentWeatherReport.uvindex.getData().get(0).getPlace() + String.valueOf(ModelCurrentWeatherReport.uvindex.getData().get(0).getValue()) + ModelCurrentWeatherReport.uvindex.getData().get(0).getDesc());
+        } else {
+            uvIndex.setText("UV: -");
+        }
+
+        ArrayList<HourlyRainfall> sd = ModelHourlyRainfall.hourlyRainfall;
+        for (int i = 0; i < sd.size(); i++) {
+            if (sd.get(i).getAutomaticWeatherStationID().equals("RF024")) {
+                automaticWeatherStation.setText(sd.get(i).getAutomaticWeatherStation());
+                automaticWeatherStationID.setText(sd.get(i).getAutomaticWeatherStationID());
+                automaticWeatherStationHourlyRainfallValueUnit.setText(sd.get(i).getValue() + " " + sd.get(i).getUnit());
+            }
+        }
     }
 }

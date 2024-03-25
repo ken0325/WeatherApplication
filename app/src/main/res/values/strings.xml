@@ -20,4 +20,5 @@
     <string name="hint">Enter temperature here</string>
     <string name="temperatureConverter">Temperature Converter</string>
     <string name="otherCountryWeather">Other Country Weather</string>
+    <string name="RainfallInThePastHourFromAutomaticWeatherStation">Rainfall in The Past Hour from Automatic Weather Station</string>
 </resources>

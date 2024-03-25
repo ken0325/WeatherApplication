@@ -22,6 +22,7 @@ import java.util.Locale;
 public class ApiCurrentWeatherReport extends Thread {
     private static final String TAG = "ApiCurrentWeatherReport";
     public static final ModelCurrentWeatherReport currentWeatherReport = new ModelCurrentWeatherReport();
+    public static final ModelHourlyRainfall hourlyRainfall = new ModelHourlyRainfall();
 
     public static String makeRequest() {
         String response = null;
@@ -34,7 +35,30 @@ public class ApiCurrentWeatherReport extends Thread {
 
             // Read the response
             InputStream in = new BufferedInputStream(conn.getInputStream());
-//            response = inputStreamToString(in);
+            response = ApiController.publicInputStreamToString(in);
+        } catch (MalformedURLException e) {
+            Log.e(TAG, "MalformedURLException: " + e.getMessage());
+        } catch (ProtocolException e) {
+            Log.e(TAG, "ProtocolException: " + e.getMessage());
+        } catch (IOException e) {
+            Log.e(TAG, "IOException: " + e.getMessage());
+        } catch (Exception e) {
+            Log.e(TAG, "Exception: " + e.getMessage());
+        }
+        return response;
+    }
+
+    public static String makeRequest2() {
+        String response = null;
+        String jsonUrl = "https://data.weather.gov.hk/weatherAPI/opendata/hourlyRainfall.php?lang=" + ApiController.language;
+
+        try {
+            URL url = new URL(jsonUrl);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+
+            // Read the response
+            InputStream in = new BufferedInputStream(conn.getInputStream());
             response = ApiController.publicInputStreamToString(in);
         } catch (MalformedURLException e) {
             Log.e(TAG, "MalformedURLException: " + e.getMessage());
@@ -139,6 +163,32 @@ public class ApiCurrentWeatherReport extends Thread {
                 humidity.setData(humidityDatumList);
                 humidity.setRecordTime(jsonObj.getJSONObject("humidity").getString("recordTime"));
                 currentWeatherReport.setHumidity(humidity);
+            } catch (final JSONException e) {
+                Log.e(TAG, "Json parsing error: " + e.getMessage());
+            }
+        } else {
+            Log.e(TAG, "Couldn't get json from HKO server.");
+        }
+
+        String dayStr2 = makeRequest2();
+        Log.e(TAG, "Response from url: " + dayStr2);
+        if (dayStr2 != null) {
+            try {
+                JSONObject jsonObj = new JSONObject(dayStr2);
+                ArrayList<HourlyRainfall> hourlyRainfallList = new ArrayList<>();
+                JSONArray hourlyRainfallDataList = jsonObj.getJSONArray("hourlyRainfall");
+                if (hourlyRainfallDataList != null) {
+                    for (int i = 0; i < hourlyRainfallDataList.length(); i++) {
+                        HourlyRainfall hourlyRainfall1 = new HourlyRainfall();
+                        hourlyRainfall1.setAutomaticWeatherStation(hourlyRainfallDataList.getJSONObject(i).getString("automaticWeatherStation"));
+                        hourlyRainfall1.setAutomaticWeatherStationID(hourlyRainfallDataList.getJSONObject(i).getString("automaticWeatherStationID"));
+                        hourlyRainfall1.setValue(hourlyRainfallDataList.getJSONObject(i).getString("value"));
+                        hourlyRainfall1.setUnit(hourlyRainfallDataList.getJSONObject(i).getString("unit"));
+                        hourlyRainfallList.add(hourlyRainfall1);
+                    }
+                }
+                hourlyRainfall.setHourlyRainfall(hourlyRainfallList);
+                hourlyRainfall.setObsTime(jsonObj.getString("obsTime"));
             } catch (final JSONException e) {
                 Log.e(TAG, "Json parsing error: " + e.getMessage());
             }

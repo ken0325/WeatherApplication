@@ -7,7 +7,7 @@ public class ModelCurrentWeatherReport {
     public String warningMessage;
     public static ArrayList<Integer> icon;
     public String iconUpdateTime;
-    public Uvindex uvindex;
+    public static Uvindex uvindex;
     public String updateTime;
     public static ArrayList<Temperature> temperature;
     public String tcmessage;

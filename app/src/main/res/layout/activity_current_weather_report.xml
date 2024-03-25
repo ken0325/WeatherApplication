@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/bg"
     android:orientation="vertical">
+
     <include
         android:id="@+id/mytoolbar"
         layout="@layout/toolbal"
@@ -15,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:drawable/btn_dropdown"
-        android:spinnerMode="dropdown"/>
+        android:spinnerMode="dropdown" />
 
     <ImageView
         android:id="@+id/currentTempIcon"
@@ -24,14 +25,31 @@
         android:layout_gravity="center"
         android:layout_marginTop="50px" />
 
-    <TextView
-        android:id="@+id/nowTemp"
+    <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="50px"
-        android:textAlignment="center"
-        android:textSize="100px" />
+        android:layout_height="match_parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="50px"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/nowTemp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="100px" />
+
+            <TextView
+                android:id="@+id/nowTempUnit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="100px" />
+        </TableRow>
+    </TableLayout>
 
     <TextView
         android:id="@+id/nowHumidity"
@@ -51,5 +69,40 @@
         android:textAlignment="center"
         android:textSize="100px" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50px"
+        android:text="@string/RainfallInThePastHourFromAutomaticWeatherStation"
+        android:textAlignment="center"
+        android:textSize="100px" />
+
+    <TextView
+        android:id="@+id/automaticWeatherStation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50px"
+        android:textAlignment="center"
+        android:textSize="100px" />
+
+    <TextView
+        android:id="@+id/automaticWeatherStationID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50px"
+        android:textAlignment="center"
+        android:textSize="100px" />
+
+    <TextView
+        android:id="@+id/automaticWeatherStationHourlyRainfallValueUnit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50px"
+        android:textAlignment="center"
+        android:textSize="100px" />
 
 </LinearLayout>

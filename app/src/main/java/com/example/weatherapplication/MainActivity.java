@@ -2,6 +2,7 @@ package com.example.weatherapplication;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -37,21 +38,30 @@ import android.widget.TextView;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
 
 
 public class MainActivity extends OptionsMenuActivity {
     private String TAG = "MainActivity";
     private TextView chineseDayTextView, ToDayTextView, defaultLocationTextView, currentTempTextView, currentTempUnitsTextView, currentMaxTempTextView, currentMaxTempUnitsTextView, currentMinTempTextView, currentMinTempUnitsTextView, humidityTextView, humidityUnitsTextView, windSpeedTextView, windSpeedUnitsTextView, windDirectionTextView, windDirectionUnitsTextView, sunsetTimeTextView, sunriseTimeTextView, updateTimeTextView;
     private ImageButton refreshBtn;
+    private Button tempConverBtn;
     FusedLocationProviderClient mFusedLocationClient;
     int PERMISSION_ID = 44;
     public static String lat, lon;
+    public static NumberFormat formatter = new DecimalFormat("#0.0");
+    public static String nowTempUnit = "C";
 
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
     LocalTime time;
@@ -88,21 +98,41 @@ public class MainActivity extends OptionsMenuActivity {
         sunriseTimeTextView = findViewById(R.id.sunriseTime);
         refreshBtn = findViewById(R.id.refreshBtn);
         updateTimeTextView = findViewById(R.id.updateTime);
-
+        tempConverBtn = findViewById(R.id.tempConverBtn);
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         getLastLocation();
         startAPI();
         setData();
 
-
         refreshBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                nowTempUnit = "C";
                 time = LocalTime.now();
                 Toast.makeText(getApplicationContext(), "data is updated", Toast.LENGTH_LONG).show();
                 startAPI();
                 setData();
+            }
+        });
+
+        tempConverBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (nowTempUnit.equals("C")) {
+                    nowTempUnit = "F";
+                    currentTempTextView.setText(String.valueOf(formatter.format(ConverterUtil.convertCelsiusToFahrenheit(Double.parseDouble(currentTempTextView.getText().toString())))));
+                    currentMaxTempTextView.setText(String.valueOf(formatter.format(ConverterUtil.convertCelsiusToFahrenheit(Double.parseDouble(currentMaxTempTextView.getText().toString())))));
+                    currentMinTempTextView.setText(String.valueOf(formatter.format(ConverterUtil.convertCelsiusToFahrenheit(Double.parseDouble(currentMinTempTextView.getText().toString())))));
+                } else {
+                    nowTempUnit = "C";
+                    currentTempTextView.setText(String.valueOf(formatter.format(ConverterUtil.convertFahrenheitToCelsius(Double.parseDouble(currentTempTextView.getText().toString())))));
+                    currentMaxTempTextView.setText(String.valueOf(formatter.format(ConverterUtil.convertFahrenheitToCelsius(Double.parseDouble(currentMaxTempTextView.getText().toString())))));
+                    currentMinTempTextView.setText(String.valueOf(formatter.format(ConverterUtil.convertFahrenheitToCelsius(Double.parseDouble(currentMinTempTextView.getText().toString())))));
+                }
+                currentTempUnitsTextView.setText("°" + nowTempUnit);
+                currentMaxTempUnitsTextView.setText("°" + nowTempUnit);
+                currentMinTempUnitsTextView.setText("°" + nowTempUnit);
             }
         });
     }
@@ -150,11 +180,7 @@ public class MainActivity extends OptionsMenuActivity {
 
             Geocoder geocoder;
             if (lat != null) {
-                if (ApiController.language.equals("en")) {
-                    geocoder = new Geocoder(this, Locale.ENGLISH);
-                } else {
-                    geocoder = new Geocoder(this, Locale.CHINA);
-                }
+                geocoder = new Geocoder(this, Locale.getDefault());
                 defaultLocationTextView.setText(geocoder.getFromLocation(Double.valueOf(lat), Double.valueOf(lon), 1).get(0).getCountryName());
             }
         } catch (JSONException e) {
