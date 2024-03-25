@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -32,6 +33,7 @@ public class NineDayWeatherForecastActivity extends OptionsMenuActivity {
     private ListView nineDayListView;
     private TextView nineDayGeneralSituationTextView, weatherIconsHyperLink;
     private ImageButton refreshBtn;
+    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,8 @@ public class NineDayWeatherForecastActivity extends OptionsMenuActivity {
 
         Toolbar toolbar = findViewById(R.id.mytoolbar);
         toolbar.setSubtitle(R.string.nineDayWeatherForecast);
+        button = toolbar.findViewById(R.id.tempConverBtn);
+        button.setVisibility(View.GONE);
         setSupportActionBar(toolbar);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -67,7 +71,6 @@ public class NineDayWeatherForecastActivity extends OptionsMenuActivity {
         });
 
     }
-
 
     public void startAPI() {
         ApiNineDayWeatherForecast jsonHandlerThread = new ApiNineDayWeatherForecast();

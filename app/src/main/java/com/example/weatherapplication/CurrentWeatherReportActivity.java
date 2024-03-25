@@ -45,7 +45,7 @@ public class CurrentWeatherReportActivity extends OptionsMenuActivity {
         tempConverBtn = findViewById(R.id.tempConverBtn);
 
         Toolbar toolbar = findViewById(R.id.mytoolbar);
-        toolbar.setSubtitle(R.string.currentweatherReport);
+        toolbar.setSubtitle(R.string.currentWeatherReport);
         setSupportActionBar(toolbar);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -65,6 +65,16 @@ public class CurrentWeatherReportActivity extends OptionsMenuActivity {
                             nowTemp.setText(String.valueOf(ModelCurrentWeatherReport.temperature.get(e).getData().get(k).getValue()));
                             nowTempUnit.setText(" °" + ModelCurrentWeatherReport.temperature.get(e).getData().get(k).getUnit());
                         }
+                    }
+                }
+                ArrayList<HourlyRainfall> s = ModelHourlyRainfall.getHourlyRainfall();
+                for (int w = 0; w < s.size(); w++) {
+                    if (s.get(w).getAutomaticWeatherStation().equals(newPlace)) {
+                        automaticWeatherStation.setText(s.get(w).getAutomaticWeatherStation());
+                        automaticWeatherStationID.setText(s.get(w).getAutomaticWeatherStationID());
+                        automaticWeatherStationHourlyRainfallValueUnit.setText(s.get(w).getValue() + " " + s.get(w).getUnit());
+                    } else {
+                        System.out.println("d");
                     }
                 }
             }

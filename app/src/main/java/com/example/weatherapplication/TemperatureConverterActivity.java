@@ -16,7 +16,7 @@ import java.time.LocalTime;
 public class TemperatureConverterActivity extends OptionsMenuActivity {
     private TextView resultTextView;
     private EditText inputText;
-    private Button button;
+    private Button button, toolbarBtn;
     private RadioButton celsius;
     private ImageButton refreshBtn;
 
@@ -27,6 +27,8 @@ public class TemperatureConverterActivity extends OptionsMenuActivity {
 
         Toolbar toolbar = findViewById(R.id.mytoolbar);
         toolbar.setSubtitle(R.string.temperatureConverter);
+        toolbarBtn = toolbar.findViewById(R.id.tempConverBtn);
+        toolbarBtn.setVisibility(View.GONE);
         setSupportActionBar(toolbar);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

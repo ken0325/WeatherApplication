@@ -2,11 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/currentWeather"
+        android:title="@string/currentWeather" />
+    <item
         android:id="@+id/localWeather"
         android:title="@string/localWeatherForecast" />
     <item
         android:id="@+id/currentweatherReport"
-        android:title="@string/currentweatherReport" />
+        android:title="@string/currentWeatherReport" />
     <item
         android:id="@+id/nineDayWeatherForecast"
         android:title="@string/nineDayWeatherForecast" />

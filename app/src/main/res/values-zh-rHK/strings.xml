@@ -9,8 +9,8 @@
     <string name="outlookTitle">展望:</string>
     <string name="localWeatherForecast">本港地區天氣預報</string>
     <string name="nineDayWeatherForecast">九天天氣預報</string>
-    <string name="currentweatherReport">本港地區天氣報告</string>
-    <string name="currentweather">目前天氣</string>
+    <string name="currentWeatherReport">本港地區天氣報告</string>
+    <string name="currentWeather">目前天氣</string>
     <string name="convertto">轉換為：</string>
     <string name="celsius">攝氏</string>
     <string name="fahrenheit">華氏</string>

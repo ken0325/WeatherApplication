@@ -18,7 +18,7 @@ public class ModelHourlyRainfall {
         this.obsTime = obsTime;
     }
 
-    public ArrayList<HourlyRainfall> getHourlyRainfall() {
+    public static ArrayList<HourlyRainfall> getHourlyRainfall() {
         return hourlyRainfall;
     }
 

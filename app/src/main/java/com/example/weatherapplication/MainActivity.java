@@ -75,7 +75,7 @@ public class MainActivity extends OptionsMenuActivity {
        time = LocalTime.now();
 
         Toolbar toolbar = findViewById(R.id.mytoolbar);
-        toolbar.setSubtitle(R.string.currentweather);
+        toolbar.setSubtitle(R.string.currentWeather);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 

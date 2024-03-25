@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,14 +17,18 @@ import androidx.appcompat.widget.Toolbar;
 public class LocalWeatherForecastActivity extends OptionsMenuActivity {
     private TextView generalSituationTextView, forecastPeriodTextView, forecastDescTextView, outlookTextView;
     private ImageButton refreshBtn;
+    private Button button;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_local_weather_forecast);
 
-        Toolbar toolbar = findViewById(R.id.mytoolbar);
+        toolbar = findViewById(R.id.mytoolbar);
         toolbar.setSubtitle(R.string.localWeatherForecast);
+        button = toolbar.findViewById(R.id.tempConverBtn);
+        button.setVisibility(View.GONE);
         setSupportActionBar(toolbar);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

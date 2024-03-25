@@ -9,8 +9,8 @@
     <string name="outlookTitle">Outlook:</string>
     <string name="localWeatherForecast">Local Weather Forecast</string>
     <string name="nineDayWeatherForecast">9-day Weather Forecast</string>
-    <string name="currentweatherReport">Current Weather Report</string>
-    <string name="currentweather">Current Weather</string>
+    <string name="currentWeatherReport">Current Weather Report</string>
+    <string name="currentWeather">Current Weather</string>
     <string name="convertto">Convert to:</string>
     <string name="celsius">Celsius</string>
     <string name="fahrenheit">Fahrenheit</string>
