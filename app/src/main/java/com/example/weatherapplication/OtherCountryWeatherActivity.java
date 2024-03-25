@@ -1,5 +1,6 @@
 package com.example.weatherapplication;
 
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.app.Dialog;
 import android.graphics.Color;
@@ -30,6 +31,7 @@ public class OtherCountryWeatherActivity extends OptionsMenuActivity {
 
         Toolbar toolbar = findViewById(R.id.mytoolbar);
         toolbar.setSubtitle(R.string.otherCountryWeather);
+        toolbar.findViewById(R.id.themesMode).setVisibility(View.GONE);
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

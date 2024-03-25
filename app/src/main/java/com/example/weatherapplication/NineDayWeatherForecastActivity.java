@@ -33,7 +33,6 @@ public class NineDayWeatherForecastActivity extends OptionsMenuActivity {
     private ListView nineDayListView;
     private TextView nineDayGeneralSituationTextView, weatherIconsHyperLink;
     private ImageButton refreshBtn;
-    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +46,8 @@ public class NineDayWeatherForecastActivity extends OptionsMenuActivity {
 
         Toolbar toolbar = findViewById(R.id.mytoolbar);
         toolbar.setSubtitle(R.string.nineDayWeatherForecast);
-        button = toolbar.findViewById(R.id.tempConverBtn);
-        button.setVisibility(View.GONE);
+        toolbar.findViewById(R.id.tempConverBtn).setVisibility(View.GONE);
+        toolbar.findViewById(R.id.themesMode).setVisibility(View.GONE);
         setSupportActionBar(toolbar);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

@@ -25,10 +25,17 @@ public class LocalWeatherForecastActivity extends OptionsMenuActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_local_weather_forecast);
 
+        generalSituationTextView = findViewById(R.id.generalSituationTextView);
+        forecastPeriodTextView = findViewById(R.id.forecastPeriodTextView);
+        forecastDescTextView = findViewById(R.id.forecastDescTextView);
+        outlookTextView = findViewById(R.id.outlookTextView);
+        refreshBtn = findViewById(R.id.refreshBtn);
         toolbar = findViewById(R.id.mytoolbar);
+
         toolbar.setSubtitle(R.string.localWeatherForecast);
         button = toolbar.findViewById(R.id.tempConverBtn);
         button.setVisibility(View.GONE);
+        toolbar.findViewById(R.id.themesMode).setVisibility(View.GONE);
         setSupportActionBar(toolbar);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -38,11 +45,7 @@ public class LocalWeatherForecastActivity extends OptionsMenuActivity {
             }
         });
 
-        generalSituationTextView = findViewById(R.id.generalSituationTextView);
-        forecastPeriodTextView = findViewById(R.id.forecastPeriodTextView);
-        forecastDescTextView = findViewById(R.id.forecastDescTextView);
-        outlookTextView = findViewById(R.id.outlookTextView);
-        refreshBtn = findViewById(R.id.refreshBtn);
+
 
         startAPI();
         setData();

@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
@@ -55,7 +56,7 @@ import java.util.Objects;
 public class MainActivity extends OptionsMenuActivity {
     private String TAG = "MainActivity";
     private TextView chineseDayTextView, ToDayTextView, defaultLocationTextView, currentTempTextView, currentTempUnitsTextView, currentMaxTempTextView, currentMaxTempUnitsTextView, currentMinTempTextView, currentMinTempUnitsTextView, humidityTextView, humidityUnitsTextView, windSpeedTextView, windSpeedUnitsTextView, windDirectionTextView, windDirectionUnitsTextView, sunsetTimeTextView, sunriseTimeTextView, updateTimeTextView;
-    private ImageButton refreshBtn;
+    private ImageButton refreshBtn, themesModeBtn;
     private Button tempConverBtn;
     FusedLocationProviderClient mFusedLocationClient;
     int PERMISSION_ID = 44;
@@ -65,6 +66,7 @@ public class MainActivity extends OptionsMenuActivity {
 
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
     LocalTime time;
+    public static String themesMode = "lightMode";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +101,14 @@ public class MainActivity extends OptionsMenuActivity {
         refreshBtn = findViewById(R.id.refreshBtn);
         updateTimeTextView = findViewById(R.id.updateTime);
         tempConverBtn = findViewById(R.id.tempConverBtn);
+        themesModeBtn = findViewById(R.id.themesMode);
+
+        themesModeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toolbalActivity.themesModeClicked();
+            }
+        });
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         getLastLocation();

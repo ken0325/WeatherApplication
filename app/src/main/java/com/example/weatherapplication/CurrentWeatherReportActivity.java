@@ -46,6 +46,7 @@ public class CurrentWeatherReportActivity extends OptionsMenuActivity {
 
         Toolbar toolbar = findViewById(R.id.mytoolbar);
         toolbar.setSubtitle(R.string.currentWeatherReport);
+        toolbar.findViewById(R.id.themesMode).setVisibility(View.GONE);
         setSupportActionBar(toolbar);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

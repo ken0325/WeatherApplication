@@ -6,7 +6,8 @@
 <!--            <style name="Theme.WeatherApplication" parent="Theme.Material3.DayNight.NoActionBar">-->
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-
+<!--        <item name="android:windowBackground">@android:color/white</item>-->
+        <item name="android:windowBackground">@drawable/bg</item>
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
