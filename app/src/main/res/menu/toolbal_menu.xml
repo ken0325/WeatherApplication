@@ -14,9 +14,6 @@
         android:id="@+id/nineDayWeatherForecast"
         android:title="@string/nineDayWeatherForecast" />
     <item
-        android:id="@+id/otherCountryWeather"
-        android:title="@string/otherCountryWeather" />
-    <item
         android:id="@+id/temperatureConverter"
         android:title="@string/temperatureConverter" />
 </menu>
