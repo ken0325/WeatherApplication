@@ -33,6 +33,9 @@ public class OptionsMenuActivity extends AppCompatActivity {
         } else if (item.getItemId() == R.id.temperatureConverter) {
             Intent intent = new Intent(getApplicationContext(), TemperatureConverterActivity.class);
             startActivity(intent);
+        } else if (item.getItemId() == R.id.weatherDisasterWarning) {
+            Intent intent = new Intent(getApplicationContext(), weatherDisasterWarningActivity.class);
+            startActivity(intent);
         }
         return true;
     }
