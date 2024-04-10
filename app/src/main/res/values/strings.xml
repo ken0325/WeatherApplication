@@ -21,4 +21,7 @@
     <string name="temperatureConverter">Temperature Converter</string>
     <string name="otherCountryWeather">Other Country Weather</string>
     <string name="RainfallInThePastHourFromAutomaticWeatherStation">Rainfall in The Past Hour from Automatic Weather Station</string>
+    <string name="weatherDisasterWarningNotification">Notification</string>
+    <string name="ThereIsCurrentlyNoDisasterWarningInformation">There is currently no disaster warning information</string>
+    <string name="WeatherDisasterWarning">Weather Disaster Warning</string>
 </resources>

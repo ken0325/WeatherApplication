@@ -21,4 +21,7 @@
     <string name="temperatureConverter">溫度轉換器</string>
     <string name="otherCountryWeather">其他國家天氣</string>
     <string name="RainfallInThePastHourFromAutomaticWeatherStation">自動氣象站過去一小時的雨量</string>
+    <string name="weatherDisasterWarningNotification">天氣災害警報通知</string>
+    <string name="ThereIsCurrentlyNoDisasterWarningInformation">目前沒有災害預警訊息</string>
+    <string name="WeatherDisasterWarning">天氣災害警報</string>
 </resources>

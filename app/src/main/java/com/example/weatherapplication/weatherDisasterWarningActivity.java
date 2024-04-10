@@ -11,10 +11,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.NotificationCompat;
 
 public class weatherDisasterWarningActivity extends OptionsMenuActivity {
     Button btn;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +27,21 @@ public class weatherDisasterWarningActivity extends OptionsMenuActivity {
             @Override
             public void onClick(View v) {
                 startAPI();
-//                String title = ModelWeatherDisasterWarning.code;
-//                showNotification(title, "message");
                 showNotification();
+            }
+        });
+
+        toolbar = findViewById(R.id.mytoolbar);
+        toolbar.setSubtitle(R.string.WeatherDisasterWarning);
+        toolbar.findViewById(R.id.themesMode).setVisibility(View.GONE);
+        toolbar.findViewById(R.id.tempConverBtn).setVisibility(View.GONE);
+        toolbar.findViewById(R.id.refreshBtn).setVisibility(View.GONE);
+        setSupportActionBar(toolbar);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
             }
         });
     }
@@ -61,7 +75,7 @@ void showNotification(){
         } else {
             mBuilder.setSmallIcon(R.mipmap.ic_launcher) // notification icon
                     .setContentTitle("Weather Disaster Warning") // title for notification
-                    .setContentText("No any Disaster Warning in now")// message for notification
+                    .setContentText("There is currently no disaster warning information")// message for notification
                     .setAutoCancel(true); // clear notification after click
         }
         Intent intent = new Intent(getApplicationContext(), weatherDisasterWarningActivity.class);

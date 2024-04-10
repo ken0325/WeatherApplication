@@ -18,5 +18,5 @@
         android:title="@string/temperatureConverter" />
     <item
         android:id="@+id/weatherDisasterWarning"
-        android:title="weatherDisasterWarningActivity" />
+        android:title="@string/WeatherDisasterWarning" />
 </menu>

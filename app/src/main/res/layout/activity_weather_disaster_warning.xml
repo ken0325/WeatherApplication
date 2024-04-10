@@ -1,18 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
     <include
         android:id="@+id/mytoolbar"
         layout="@layout/toolbal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" />
 
-    <Button
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_centerInParent="true">
+
+    <TextView
+        android:id="@+id/myText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="@string/ThereIsCurrentlyNoDisasterWarningInformation"
+        android:textSize="30dp" />
+
+        <Button
         android:id="@+id/button_DefaultNotification"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="系統預設通知" />
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:text="@string/weatherDisasterWarningNotification" />
+    </LinearLayout>
 </LinearLayout>
